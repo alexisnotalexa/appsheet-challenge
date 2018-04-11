@@ -10,14 +10,14 @@ class App extends Component {
     super();
 
     // functions
-    this.findDatasetLength = this.findDatasetLength.bind(this);
+    this.getUserData = this.getUserData.bind(this);
   }
 
   componentDidMount() {
-    this.findDatasetLength();
+    this.getUserData();
   }
 
-  findDatasetLength() {
+  getUserData() {
     getAllIds('https://appsheettest1.azurewebsites.net/sample/list')
       .then((ids) => {
         return ids.map(id => {
