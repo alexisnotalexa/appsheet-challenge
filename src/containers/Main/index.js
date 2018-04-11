@@ -13,9 +13,8 @@ class Main extends Component {
     super(props);
 
     this.state = {
-      usersLoaded: false,
-      filter: 'Age',
-      sorted: ''
+      filter: 'Name',
+      userList: false
     };
 
     // functions
@@ -47,7 +46,7 @@ class Main extends Component {
           return user ? user.data : false;
         }).filter(user => user);
       }).then(users => {
-        this.filterUsers(users);
+        // this.filterUsers(users);
         this.getYoungestUsers(users);
       });
   }
@@ -73,8 +72,9 @@ class Main extends Component {
         return index < 5 ? user : false;
       })
       .filter(user => user);
+
     this.setState({
-      sorted: sorted
+      userList: this.filterUsersByName(sorted)
     });
   }
 
@@ -112,37 +112,33 @@ class Main extends Component {
   }
 
   filterUsersByName(users) {
-    let sorted = users.sort((a, b) => {
+    return users.sort((a, b) => {
       if(a.name < b.name) return -1;
       if(a.name > b.name) return 1;
       return 0;
     });
-    this.setState({
-      sorted: sorted
-    });
   }
 
   filterUsersByAge(users) {
-    let sorted = users.sort((a, b) => {
+    return users.sort((a, b) => {
       if(a.age < b.age) return -1;
       if(a.age > b.age) return 1;
       return 0;
     });
-    this.setState({
-      sorted: sorted
-    });
   }
 
   handleFilterChange(e) {
+    let filter = e.target.value;
+    let users = this.state.userList;
     this.setState({
-      filter: e.target.value
+      filter: filter,
+      sorted: filter === 'Name' ? this.filterUsersByName(users) : this.filterUsersByAge(users)
     });
-    e.target.value === 'Name' ? this.filterUsersByName(this.state.sorted) : this.filterUsersByAge(this.state.sorted);
   }
 
   render() {
-    let cards = this.state.sorted &&
-      this.state.sorted.map(user => {
+    let cards = this.state.userList &&
+      this.state.userList.map(user => {
         return (
           <Card
             key={user.id}
@@ -150,7 +146,7 @@ class Main extends Component {
           />
         );
       });
-    if(this.state.sorted) {
+    if(this.state.userList) {
       return (
         <div className="main">
           <div>
