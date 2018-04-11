@@ -12,6 +12,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
 
+    // initial state
     this.state = {
       filter: 'Name',
       userList: false
@@ -20,10 +21,9 @@ class Main extends Component {
     // functions
     this.getUserData = this.getUserData.bind(this);
     this.getYoungestUsers = this.getYoungestUsers.bind(this);
-    this.filterUsers = this.filterUsers.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
-    this.filterUsersByName = this.filterUsersByName.bind(this);
     this.filterUsersByAge = this.filterUsersByAge.bind(this);
+    this.filterUsersByName = this.filterUsersByName.bind(this);
   }
 
   componentDidMount() {
@@ -46,7 +46,6 @@ class Main extends Component {
           return user ? user.data : false;
         }).filter(user => user);
       }).then(users => {
-        // this.filterUsers(users);
         this.getYoungestUsers(users);
       });
   }
@@ -78,36 +77,11 @@ class Main extends Component {
     });
   }
 
-  filterUsers(users) {
-    let regex = /^(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/g;
-    let sorted = users
-      .sort((a, b) => {
-        if(a.age < b.age) return -1;
-        if(a.age > b.age) return 1;
-        return 0;
-      })
-      .filter(user => user.number && regex.test(user.number))
-      .map((user, index) => {
-        let regex1 = /^(\d{3})[\-]?\d{3}[\-]?\d{4}$/g; // 555-555-5555
-        let regex2 = /[\(\)\s]+/g; // gets rid of () or whitespace
-        if(!user.number.match(regex1)) {
-          let number = user.number.replace(regex2, '');
-          number = number.slice(0, 3) + '-' + number.slice(3);
-          user.number = number;
-        }
-        user.name = user.name.charAt(0).toUpperCase() + user.name.slice(1);
-        // need to reformat phone
-        return index < 5 ? user : false;
-      })
-      .filter(user => user)
-      .sort((a, b) => {
-        if(a.name < b.name) return -1;
-        if(a.name > b.name) return 1;
-        return 0;
-      });
-      console.log(sorted);
-    this.setState({
-      usersLoaded: sorted
+  filterUsersByAge(users) {
+    return users.sort((a, b) => {
+      if(a.age < b.age) return -1;
+      if(a.age > b.age) return 1;
+      return 0;
     });
   }
 
@@ -115,14 +89,6 @@ class Main extends Component {
     return users.sort((a, b) => {
       if(a.name < b.name) return -1;
       if(a.name > b.name) return 1;
-      return 0;
-    });
-  }
-
-  filterUsersByAge(users) {
-    return users.sort((a, b) => {
-      if(a.age < b.age) return -1;
-      if(a.age > b.age) return 1;
       return 0;
     });
   }
