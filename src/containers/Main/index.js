@@ -55,9 +55,16 @@ class Main extends Component {
       })
       .filter(user => user.number && regex.test(user.number))
       .map((user, index) => {
+        user.name = user.name.charAt(0).toUpperCase() + user.name.slice(1);
+        // need to reformat phone
         return index < 5 ? user : false;
       })
-      .filter(user => user);
+      .filter(user => user)
+      .sort((a, b) => {
+        if(a.name < b.name) return -1;
+        if(a.name > b.name) return 1;
+        return 0;
+      });
       console.log(sorted);
     this.setState({
       usersLoaded: sorted
@@ -76,8 +83,7 @@ class Main extends Component {
       });
     if(this.state.usersLoaded) {
       return (
-        <div>
-          <h1>Main</h1>
+        <div className="main">
           {cards}
         </div>
       );
