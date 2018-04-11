@@ -3,7 +3,7 @@ import axios from 'axios';
 import './styles.css';
 
 // COMPONENTS
-import Card from '../../components/Card';
+import Card from '../Card';
 
 // UTILS
 import { getAllIds } from '../../utils/users.js';
