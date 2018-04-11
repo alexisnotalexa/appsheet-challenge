@@ -7,7 +7,7 @@ class Card extends Component {
 
     this.state = {
       bio: 'none',
-      profile: 'block'
+      profile: 'flex'
     };
 
     // function
@@ -17,7 +17,7 @@ class Card extends Component {
 
   showUserBio() {
     this.setState({
-      bio: 'block',
+      bio: 'flex',
       profile: 'none'
     });
   }
@@ -25,7 +25,7 @@ class Card extends Component {
   showUserProfile() {
     this.setState({
       bio: 'none',
-      profile: 'block'
+      profile: 'flex'
     });
   }
 
