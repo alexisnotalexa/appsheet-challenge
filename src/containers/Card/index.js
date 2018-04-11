@@ -32,24 +32,31 @@ class Card extends Component {
   render() {
     return (
       <div className="card">
-        <img className="card__image" src={this.props.photo} />
+        <img className="card__img" src={this.props.photo} />
+
         <div className="card__container" style={{display: this.state.profile}}>
-          <span className="card__title">{this.props.name}</span>
-          <div className="card__content">
-            <div className="card__content--section">
-              <span className="card__content--label">Phone Number</span>
+          <span className="container__span--title">{this.props.name}</span>
+          <div className="container__row">
+            <div className="container__row__section">
+              <span className="container__span--label">Phone Number</span>
               <span>{this.props.number}</span>
             </div>
-            <div className="card__content--section">
-              <span className="card__content--label">Age</span>
+            <div className="container__row__section">
+              <span className="container__span--label">Age</span>
               <span>{this.props.age}</span>
             </div>
           </div>
-          <button className="card__btn" onClick={this.showUserBio}>Read Bio</button>
+          <button className="container__btn container__btn--bio" onClick={this.showUserBio}>Read Bio</button>
         </div>
+
         <div className="card__container" style={{display: this.state.bio}}>
-          <button onClick={this.showUserProfile}><i class="fas fa-arrow-left"></i></button>
-          <p>{this.props.bio}</p>
+          <div className="container__margin container__margin--top">
+            <button className="container__btn container__btn--back-btn" onClick={this.showUserProfile}><i class="fas fa-arrow-left"></i></button>
+          </div>
+          <div className="container__bio">
+            {this.props.bio}
+          </div>
+          <div className="container__margin" />
         </div>
       </div>
     );
