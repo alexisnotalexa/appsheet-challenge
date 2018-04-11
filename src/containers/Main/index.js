@@ -55,6 +55,14 @@ class Main extends Component {
       })
       .filter(user => user.number && regex.test(user.number))
       .map((user, index) => {
+        let regex1 = /^(\d{3})[\-]?\d{3}[\-]?\d{4}$/g; // 555-555-5555
+        let regex2 = /[\(\)\s]+/g; // gets rid of () or whitespace
+        if(!user.number.match(regex1)) {
+          let number = user.number.replace(regex2, '');
+          number = number.slice(0, 3) + '-' + number.slice(3);
+          user.number = number;
+          console.log(number);
+        }
         user.name = user.name.charAt(0).toUpperCase() + user.name.slice(1);
         // need to reformat phone
         return index < 5 ? user : false;
