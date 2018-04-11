@@ -136,7 +136,9 @@ class Main extends Component {
               <label htmlFor="age">Age</label>
             </div>
           </div>
-          {cards}
+          <div className="main__cards-container">
+            {cards}
+          </div>
         </div>
       );
     } else {
