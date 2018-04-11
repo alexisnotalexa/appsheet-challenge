@@ -41,16 +41,13 @@ class Main extends Component {
           return user ? user.data : false;
         }).filter(user => user);
       }).then(users => {
-        this.setState({
-          usersLoaded: users
-        });
-        this.filterUsers();
+        this.filterUsers(users);
       });
   }
 
-  filterUsers() {
+  filterUsers(users) {
     let regex = /^(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/g;
-    let sorted = this.state.usersLoaded
+    let sorted = users
       .sort((a, b) => {
         if(a.age < b.age) return -1;
         if(a.age > b.age) return 1;
@@ -61,18 +58,27 @@ class Main extends Component {
         return index < 5 ? user : false;
       })
       .filter(user => user);
-    console.log(sorted);
+      console.log(sorted);
+    this.setState({
+      usersLoaded: sorted
+    });
   }
 
   render() {
-    // let cards = this.state.usersLoaded &&
-    //   this.state.usersLoaded.map(user => {
-    //     console.log(user);
-    //   });
+    let cards = this.state.usersLoaded &&
+      this.state.usersLoaded.map(user => {
+        return (
+          <Card
+            key={user.id}
+            {...user}
+          />
+        );
+      });
     if(this.state.usersLoaded) {
       return (
         <div>
           <h1>Main</h1>
+          {cards}
         </div>
       );
     } else {
