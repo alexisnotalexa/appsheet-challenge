@@ -5,12 +5,13 @@ class Card extends Component {
   constructor(props) {
     super(props);
 
+    // initial state
     this.state = {
       bio: 'none',
       profile: 'flex'
     };
 
-    // function
+    // functions
     this.showUserBio = this.showUserBio.bind(this);
     this.showUserProfile = this.showUserProfile.bind(this);
   }

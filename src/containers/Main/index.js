@@ -141,7 +141,7 @@ class Main extends Component {
             <label className="filter__label" htmlFor="filter">Filter by:</label>
             <div className="filter__cntrls">
               <input
-                name="name"
+                id="name"
                 type="radio"
                 value="Name"
                 onChange={this.handleFilterChange}
@@ -149,7 +149,7 @@ class Main extends Component {
               />
               <label htmlFor="name" id="name-label">Name</label>
               <input
-                name="age"
+                id="age"
                 type="radio"
                 value="Age"
                 onChange={this.handleFilterChange}
