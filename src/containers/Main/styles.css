@@ -5,40 +5,61 @@
   margin: 2rem;
 }
 
-.main__label {
+.main__filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.filter__label {
   font-size: .8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.main__filter {
-  display:flex;
-  flex-flow:row wrap;
+.filter__cntrls {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: 1rem;
 }
 
-.main__filter > label {
+.filter__cntrls > label {
   display:block;
   flex:1;
-  border:1px solid lightgray;
+  border:1px solid dodgerblue;
   border-right: none;
-  color: darkgray;
+  color: dodgerblue;
   margin:0;
   padding:.4em;
+  font-weight: 600;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
 
-.main__filter > label:last-child {
-  border-right:0.5px solid lightgray;
+.filter__cntrls > #test {
+  border-top-left-radius: .5rem;
+  border-bottom-left-radius: .5rem;
 }
 
-.main__filter > input[type="radio"] {
+.filter__cntrls > label:last-child {
+  border-right:0.5px solid dodgerblue;
+  border-top-right-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+}
+
+.filter__cntrls > input[type="radio"] {
   -webkit-appearance: none;
   margin: 0;
   position: absolute;
 }
 
-.main__filter > input[type="radio"]:checked + label {
-  background-color: lightgray;
+.filter__cntrls > input[type="radio"]:checked + label {
+  background-color: dodgerblue;
   color: white;
 }
 

@@ -115,9 +115,9 @@ class Main extends Component {
     if(this.state.userList) {
       return (
         <div className="main">
-          <div>
-            <label className="main__label" htmlFor="filter">Filter by:</label>
-            <div className="main__filter">
+          <div className="main__filter">
+            <label className="filter__label" htmlFor="filter">Filter by:</label>
+            <div className="filter__cntrls">
               <input
                 id="name"
                 type="radio"
@@ -125,7 +125,7 @@ class Main extends Component {
                 onChange={this.handleFilterChange}
                 checked={this.state.filter === 'Name'}
               />
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name" id="test">Name</label>
               <input
                 id="age"
                 type="radio"
