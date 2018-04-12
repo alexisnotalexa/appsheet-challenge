@@ -5,6 +5,43 @@
   margin: 2rem;
 }
 
+.main__label {
+  font-size: .8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.main__filter {
+  display:flex;
+  flex-flow:row wrap;
+}
+
+.main__filter > label {
+  display:block;
+  flex:1;
+  border:1px solid lightgray;
+  border-right: none;
+  color: darkgray;
+  margin:0;
+  padding:.4em;
+}
+
+.main__filter > label:last-child {
+  border-right:0.5px solid lightgray;
+}
+
+.main__filter > input[type="radio"] {
+  -webkit-appearance: none;
+  margin: 0;
+  position: absolute;
+}
+
+.main__filter > input[type="radio"]:checked + label {
+  background-color: lightgray;
+  color: white;
+}
+
 @media only screen and (min-width : 500px) {
   .main__cards-container {
     display: flex;

@@ -116,7 +116,7 @@ class Main extends Component {
       return (
         <div className="main">
           <div>
-            <label htmlFor="filter">Filter by:</label>
+            <label className="main__label" htmlFor="filter">Filter by:</label>
             <div className="main__filter">
               <input
                 id="name"
