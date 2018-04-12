@@ -34,11 +34,11 @@
   color: dodgerblue;
   margin:0;
   padding:.4em;
-  font-weight: 600;
   font-size: .8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
+  transition: all .3s ease;
 }
 
 .filter__cntrls > #test {

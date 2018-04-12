@@ -1,7 +1,38 @@
 header {
-  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .fa-circle {
   color: dodgerblue;
 }
+
+.header__bg {
+  width: 100%;
+  height: 4rem;
+  background: dodgerblue;
+  position: absolute;
+  border-bottom: 3px solid gainsboro;
+}
+
+.header__circle {
+  position: relative;
+  background: dodgerblue;
+  border-radius: 50%;
+  border: 3px solid gainsboro;
+  width: 55px;
+  height: 55px;
+  margin-top: 2rem;
+  z-index: 2;
+}
+
+.fa-telegram-plane {
+  margin-top: 13px;
+  margin-right: 2px;
+}
+
+/*<span class="fa-layers fa-fw fa-4x">
+        <i class="fas fa-circle"></i>
+        <i class="fa-inverse fab fa-telegram-plane" data-fa-transform="shrink-6 down-.5 left-.5"></i>
+      </span>*/
