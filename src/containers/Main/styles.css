@@ -29,12 +29,13 @@
 .filter__cntrls > label {
   display:block;
   flex:1;
-  border:1px solid dodgerblue;
+  border:1px solid #3a7df6;
   border-right: none;
-  color: dodgerblue;
+  color: #3a7df6;
   margin:0;
   padding:.4em;
   font-size: .8rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
@@ -47,7 +48,7 @@
 }
 
 .filter__cntrls > label:last-child {
-  border-right:0.5px solid dodgerblue;
+  border-right:0.5px solid #3a7df6;
   border-top-right-radius: .5rem;
   border-bottom-right-radius: .5rem;
 }
@@ -59,7 +60,7 @@
 }
 
 .filter__cntrls > input[type="radio"]:checked + label {
-  background-color: dodgerblue;
+  background-color: #3a7df6;
   color: white;
 }
 

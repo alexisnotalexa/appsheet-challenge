@@ -4,23 +4,19 @@ header {
   align-items: center;
 }
 
-.fa-circle {
-  color: dodgerblue;
-}
-
 .header__bg {
   width: 100%;
   height: 4rem;
-  background: dodgerblue;
+  background: #3a7df6;
   position: absolute;
-  border-bottom: 3px solid gainsboro;
+  border-bottom: 3px solid white;
 }
 
 .header__circle {
   position: relative;
-  background: dodgerblue;
+  background: #3a7df6;
   border-radius: 50%;
-  border: 3px solid gainsboro;
+  border: 3px solid white;
   width: 55px;
   height: 55px;
   margin-top: 2rem;
@@ -31,8 +27,3 @@ header {
   margin-top: 13px;
   margin-right: 2px;
 }
-
-/*<span class="fa-layers fa-fw fa-4x">
-        <i class="fas fa-circle"></i>
-        <i class="fa-inverse fab fa-telegram-plane" data-fa-transform="shrink-6 down-.5 left-.5"></i>
-      </span>*/

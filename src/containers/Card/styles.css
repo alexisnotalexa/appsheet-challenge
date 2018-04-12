@@ -72,20 +72,20 @@
   color: rgba(0,0,0,0.3);
 }
 
-.container__btn--bio {
+/*.container__btn--bio {
   background-color: white;
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid dodgerblue;
   border-radius: 1rem;
-  color: rgba(0,0,0,0.3);
+  color: dodgerblue;
   font-size: 12px;
   font-weight: 600;
   width: 80%;
   padding: .5rem;
   transition: all .5s ease;
-}
+}*/
 
-/*.container__btn--bio {
-  background: linear-gradient(to right, dodgerblue, blue);
+.container__btn--bio {
+  background: linear-gradient(to right, #3a7df6, blue);
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   border-radius: 1rem;
   color: white;
@@ -93,11 +93,10 @@
   font-weight: 600;
   width: 80%;
   padding: .5rem;
-  transition: all 0.5s ease;
-}*/
+}
 
-.container__btn--bio:hover {
-  background: linear-gradient(to right, blue, dodgerblue);
+.container__btn--bio:active {
+  transform: translateY(2px);
 }
 
 .container__bio {
