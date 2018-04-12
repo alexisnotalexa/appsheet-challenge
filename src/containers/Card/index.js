@@ -7,8 +7,8 @@ class Card extends Component {
 
     // initial state
     this.state = {
-      bio: 'none',
-      profile: 'flex'
+      bio: 'hidden',
+      profile: 'card__container visible'
     };
 
     // functions
@@ -18,15 +18,15 @@ class Card extends Component {
 
   showUserBio() {
     this.setState({
-      bio: 'flex',
-      profile: 'none'
+      bio: 'card__container visible',
+      profile: 'hidden'
     });
   }
 
   showUserProfile() {
     this.setState({
-      bio: 'none',
-      profile: 'flex'
+      bio: 'hidden',
+      profile: 'card__container visible'
     });
   }
 
@@ -35,7 +35,7 @@ class Card extends Component {
       <div className="card">
         <img className="card__img" src={this.props.photo} />
 
-        <div className="card__container" style={{display: this.state.profile}}>
+        <div className={this.state.profile}>
           <span className="container__span--title">{this.props.name}</span>
           <div className="container__row">
             <div className="container__row__section">
@@ -50,7 +50,7 @@ class Card extends Component {
           <button className="container__btn container__btn--bio" onClick={this.showUserBio}>Read Bio</button>
         </div>
 
-        <div className="card__container" style={{display: this.state.bio}}>
+        <div className={this.state.bio}>
           <div className="container__margin container__margin--top">
             <button className="container__btn container__btn--back-btn" onClick={this.showUserProfile}><i class="fas fa-arrow-left"></i></button>
           </div>

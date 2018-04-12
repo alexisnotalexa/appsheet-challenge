@@ -35,6 +35,19 @@
   width: 200px;
 }
 
+.visible {
+  display: flex;
+  animation: fadein 1.5s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 .container__row {
   display: flex;
   justify-content: space-between;
