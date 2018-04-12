@@ -1,20 +1,21 @@
 .card {
-  background-color: ghostwhite;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
   margin: 1.5rem;
 }
 
 @media only screen and (min-width : 500px) {
   .card {
     flex-direction: row;
+    height: 200px;
   }
 }
 
 .card__img {
-  height: 200px;
+  height: 100%;
   width: 200px;
 }
 
@@ -47,29 +48,38 @@
 }
 
 .container__span--label {
+  color: rgba(0,0,0,0.3);
   font-size: .5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .container__btn,
 .container__btn:focus {
+  border: 0;
   background-color: transparent;
   outline: 0;
 }
 
 .container__btn--back-btn {
-  border: 0;
-  color: gray;
+  color: rgba(0,0,0,0.3);
 }
 
 .container__btn--bio {
-  border: 2px solid blue;
+  background: linear-gradient(to right, dodgerblue, blue);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
   border-radius: 1rem;
-  color: blue;
+  color: white;
   font-size: 12px;
   font-weight: 600;
   width: 80%;
   padding: .5rem;
+  transition: all 0.3s ease-in;
+}
+
+.container__btn--bio:hover {
+  background: linear-gradient(to right, blue, blue);;
 }
 
 .container__bio {
@@ -78,7 +88,6 @@
 }
 
 .container__margin {
-  background-color: ghostwhite;
   margin-bottom: .3rem;
 }
 
