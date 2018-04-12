@@ -33,43 +33,62 @@ class Main extends Component {
   getUserData() {
     getAllIds('https://appsheettest1.azurewebsites.net/sample/list')
       .then((ids) => {
+        // creates a array of promises returned from the api call
         return ids.map(id => {
+          // calls the api based on the current id
           return axios.get(`https://appsheettest1.azurewebsites.net/sample/detail/${id}`)
             .catch(err => {
+              // if any id's are invalid, print error
               console.log(err);
             });
         });
-      }).then(promises => {
+      })
+      .then(promises => {
+        // runs all the promises, returns api responses
         return axios.all(promises);
-      }).then(results => {
-        return results.map(user => {
-          return user ? user.data : false;
-        }).filter(user => user);
+      })
+      .then(results => {
+        return results
+        // filters out any invalid responses from api
+        .filter(user => user)
+        // creates new array with only user data
+        .map(user => user.data);
       }).then(users => {
         this.getYoungestUsers(users);
       });
   }
 
   getYoungestUsers(users) {
-    let validNumber = /^(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/g; // (555)555-555, 555-555-555 555 555 555
-    let validNumberFormat = /^(\d{3})[\-]?\d{3}[\-]?\d{4}$/g; // 555-555-555
-    let findInvalidChar = /[\(\)\s]+/g; // finds () or whitespace
+    // valid phone number formats: (555)555-555, 555-555-5555, 555 555 5555, etc
+    let validNumFormat = /^(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/g;
+    // standardized phone number format: 555-555-5555
+    let stndrdNumFormat = /^(\d{3})[\-]?\d{3}[\-]?\d{4}$/g;
+    // regex for '()' or whitespace
+    let findInvalidChars = /[\(\)\s]+/g;
 
-    let sorted = users.sort((a, b) => {
+    let sorted = users
+      // sort by age
+      .sort((a, b) => {
         if(a.age < b.age) return -1;
         if(a.age > b.age) return 1;
         return 0;
       })
-      .filter(user => user.number && validNumber.test(user.number))
+      // filter out invalid phone numbers
+      .filter(user => user.number && validNumFormat.test(user.number))
+      // reformats users phone number and name
       .map((user, index) => {
-        if(!user.number.match(validNumberFormat)) {
-          let number = user.number.replace(findInvalidChar, '');
+        // reformat phone number (555-555-5555)
+        if(!user.number.match(stndrdNumFormat)) {
+          let number = user.number.replace(findInvalidChars, '');
           number = number.slice(0, 3) + '-' + number.slice(3);
           user.number = number;
         }
+        // reformat name (ex. bob -> Bob)
         user.name = user.name.charAt(0).toUpperCase() + user.name.slice(1);
+        // grabs first 5 youngest users
         return index < 5 ? user : false;
       })
+      // filters out any invalid/falsey users
       .filter(user => user);
 
     this.setState({
@@ -78,19 +97,21 @@ class Main extends Component {
   }
 
   filterUsersByAge(users) {
-    return users.sort((a, b) => {
-      if(a.age < b.age) return -1;
-      if(a.age > b.age) return 1;
-      return 0;
-    });
+    return users
+      .sort((a, b) => {
+        if(a.age < b.age) return -1;
+        if(a.age > b.age) return 1;
+        return 0;
+      });
   }
 
   filterUsersByName(users) {
-    return users.sort((a, b) => {
-      if(a.name < b.name) return -1;
-      if(a.name > b.name) return 1;
-      return 0;
-    });
+    return users
+      .sort((a, b) => {
+        if(a.name < b.name) return -1;
+        if(a.name > b.name) return 1;
+        return 0;
+      });
   }
 
   handleFilterChange(e) {
@@ -112,6 +133,7 @@ class Main extends Component {
           />
         );
       });
+
     if(this.state.userList) {
       return (
         <div className="main">
@@ -119,15 +141,15 @@ class Main extends Component {
             <label className="filter__label" htmlFor="filter">Filter by:</label>
             <div className="filter__cntrls">
               <input
-                id="name"
+                name="name"
                 type="radio"
                 value="Name"
                 onChange={this.handleFilterChange}
                 checked={this.state.filter === 'Name'}
               />
-              <label htmlFor="name" id="test">Name</label>
+              <label htmlFor="name" id="name-label">Name</label>
               <input
-                id="age"
+                name="age"
                 type="radio"
                 value="Age"
                 onChange={this.handleFilterChange}
@@ -136,6 +158,7 @@ class Main extends Component {
               <label htmlFor="age">Age</label>
             </div>
           </div>
+
           <div className="main__cards-container">
             {cards}
           </div>

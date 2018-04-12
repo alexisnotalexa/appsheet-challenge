@@ -5,11 +5,11 @@ header {
 }
 
 .header__bg {
-  width: 100%;
-  height: 4rem;
   background: #3a7df6;
-  position: absolute;
   border-bottom: 3px solid white;
+  position: absolute;
+  height: 4rem;
+  width: 100%;
 }
 
 .header__circle {

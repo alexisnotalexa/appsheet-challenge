@@ -16,10 +16,11 @@
 .filter__label {
   font-size: .8rem;
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
+/* filter controls */
 .filter__cntrls {
   display: flex;
   flex-flow: row wrap;
@@ -42,7 +43,8 @@
   transition: all .3s ease;
 }
 
-.filter__cntrls > #test {
+/* first-child filter label */
+#name-label {
   border-top-left-radius: .5rem;
   border-bottom-left-radius: .5rem;
 }
@@ -59,11 +61,13 @@
   position: absolute;
 }
 
+/* filter control when checked/active */
 .filter__cntrls > input[type="radio"]:checked + label {
   background-color: #3a7df6;
   color: white;
 }
 
+/* cards container */
 @media only screen and (min-width : 500px) {
   .main__cards-container {
     display: flex;

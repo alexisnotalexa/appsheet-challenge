@@ -72,18 +72,6 @@
   color: rgba(0,0,0,0.3);
 }
 
-/*.container__btn--bio {
-  background-color: white;
-  border: 2px solid dodgerblue;
-  border-radius: 1rem;
-  color: dodgerblue;
-  font-size: 12px;
-  font-weight: 600;
-  width: 80%;
-  padding: .5rem;
-  transition: all .5s ease;
-}*/
-
 .container__btn--bio {
   background: linear-gradient(to right, #3a7df6, blue);
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
