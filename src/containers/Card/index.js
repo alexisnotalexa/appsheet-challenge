@@ -33,7 +33,7 @@ class Card extends Component {
   render() {
     return (
       <div className="card">
-        <img className="card__img" src={this.props.photo} />
+        <img className="card__img" src={this.props.photo} alt={this.props.name} />
 
         <div className={this.state.profile}>
           <span className="container__span--title">{this.props.name}</span>
