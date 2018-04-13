@@ -68,6 +68,16 @@
 }
 
 /* cards container */
+/*animation for cards container*/
+.slide-in {
+  animation: slidein .7s ease;
+}
+
+@keyframes slidein {
+  from { transform: translateY(-1rem); }
+  to { transform: translateY(0); }
+}
+
 @media only screen and (min-width : 500px) {
   .main__cards-container {
     display: flex;

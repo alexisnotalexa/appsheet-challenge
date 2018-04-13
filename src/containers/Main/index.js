@@ -125,14 +125,15 @@ class Main extends Component {
 
   render() {
     let cards = this.state.userList &&
-      this.state.userList.map(user => {
-        return (
-          <Card
-            key={user.id}
-            {...user}
-          />
-        );
-      });
+      this.state.userList
+        .map(user => {
+          return (
+            <Card
+              key={user.id}
+              {...user}
+            />
+          );
+        });
 
     if(this.state.userList) {
       return (
@@ -159,7 +160,7 @@ class Main extends Component {
             </div>
           </div>
 
-          <div className="main__cards-container">
+          <div className="main__cards-container slide-in">
             {cards}
           </div>
         </div>
