@@ -1,3 +1,7 @@
+/**
+ * @jest-environment node
+ */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Adapter from 'enzyme-adapter-react-16';
@@ -8,12 +12,6 @@ configure({ adapter: new Adapter() });
 import Card from '../containers/Card';
 
 describe('Card', () => {
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Card />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
-
   it('should have an image to display users picture', () => {
     const wrapper = shallow(<Card />);
     expect(wrapper.find('img')).to.have.length(1);
