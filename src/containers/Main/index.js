@@ -60,11 +60,11 @@ class Main extends Component {
 
   getYoungestUsers(users) {
     // valid phone number formats: (555)555-555, 555-555-5555, 555 555 5555, etc
-    let validNumFormat = /^(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/g;
+    let validNumFormat = new RegExp(/^(\(\d{3}\)|\d{3})[\s-]?\d{3}[\s-]?\d{4}$/g);
     // standardized phone number format: 555-555-5555
-    let stndrdNumFormat = /^(\d{3})[\-]?\d{3}[\-]?\d{4}$/g;
+    let stndrdNumFormat = /^(\d{3})[-]?\d{3}[-]?\d{4}$/g;
     // regex for '()' or whitespace
-    let findInvalidChars = /[\(\)\s]+/g;
+    let findInvalidChars = /[()\s]+/g;
 
     let sorted = users
       // sort by age
