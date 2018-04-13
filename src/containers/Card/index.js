@@ -52,7 +52,7 @@ class Card extends Component {
 
         <div className={this.state.bio}>
           <div className="container__margin container__margin--top">
-            <button className="container__btn container__btn--back-btn" onClick={this.showUserProfile}><i class="fas fa-arrow-left"></i></button>
+            <button className="container__btn container__btn--back-btn" onClick={this.showUserProfile}><i className="fas fa-arrow-left"></i></button>
           </div>
           <div className="container__bio">
             {this.props.bio}
